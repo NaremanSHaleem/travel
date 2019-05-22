@@ -1,0 +1,114 @@
+<section class="header-video" style="width: 100%; height: 800px;">
+	<div id="hero_video">
+		<div class="wrapper">
+			<div class="container">
+				<h3>Book unique experiences</h3>
+				<p>Expolore top rated tours, hotels and restaurants around the world</p>
+				<form>
+					<div class="row no-gutters custom-search-input-2">
+
+						<div class="col-lg-3">
+							<div class="form-group nice-select wide" [ngClass]="{'open' : toggle2 }">
+								<input type="text" name="flightfrom" id="flight-from" class="field-input form-control"
+									placeholder="Destination" (blur)="ClearResults()" [(ngModel)]="searchDestination"
+									 (ngModelChange)="filterItems($event)" >
+								<ul class="results countries-dropdown list">
+									<li class=" option" *ngFor="let item of DataFeed" value="item.destination_id" (click)="SelectItem(item)">
+										{{item.name}}
+									</li>
+								</ul>
+								<i class="icon_pin_alt"></i>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="form-group">
+								<div class="panel-dropdown" >
+									<a (click)="toggle3 = !toggle3" (blur)="toggle3 = false" onchange="total()">Guests <span
+											class="qtyTotal">{{totalnumberofpasangers}}</span></a>
+									<div class="panel-dropdown-content right" [ngClass]="{'dropit' : toggle3 }" >
+										<div class="dd-title">
+											<label>Select rooms passangers</label>
+										</div>
+										<div class="room" *ngFor="let room of rooms">
+											<h6>Room {{room.id}}<strong id="small-minus"(click)="removeRoom(room.id)" *ngIf="room.id > 1">-</strong></h6>
+											<div class="qtyButtons">
+												<label>Adults</label>
+												<div (click)="removeAdult(room.id)" class="qtyDec"></div><input type="text"
+													name="qtyInput" value="{{room.adults}}">
+												<div (click)="addAdult(room.id)" class="qtyInc"></div>
+											</div>
+											<div class="qtyButtons">
+												<label>Children</label>
+												<div (click)="removeChild(room.id)" class="qtyDec"></div><input type="text"
+													name="qtyInput" value="{{room.children.length}}">
+												<div (click)="addAChild(room.id)" class="qtyInc"></div>
+											</div>
+											<div>
+													<form >
+												<div class="col-lg-6 child-age"  *ngFor="let ageItem of room.children; let i = index;">
+													<div >
+
+														<input type="text" placeholder="Child {{i+1}} age" style="width:100%" name="ageItem{{i+1}}" (input)="agevaluechange($event, room, i)" >
+													</div>
+												</div>
+												<!-- Chosen name: {{ childrenAges.controls.items.controls[i].controls.age.value }} -->
+
+										</form>
+											</div>
+										</div>
+										<div class="addroom" (click)="addRoom(rooms.length)">
+											<strong>+</strong> Add room
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+
+								<div class="form-group" (blur)="toggle = false" >
+										<!-- <input class="form-control" type="text" name="dates" placeholder="When.."> -->
+										<!-- <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">		</ngb-datepicker> -->
+										<div class="input-group" >
+											<input class="form-control" placeholder="When.." name="dp" ngbDatepicker
+												#d="ngbDatepicker" (click)="toggle = !toggle" value="{{ mydate +' > ' + mydate2}}">
+										</div>
+										<ngb-datepicker [ngClass]="{'open' : toggle }"  #dp
+											(select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+											outsideDays="hidden">
+										</ngb-datepicker>
+			
+										<ng-template #t let-date let-focused="focused">
+											<span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+												[class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+												(mouseleave)="hoveredDate = null">
+												{{ date.day }}
+											</span>
+										</ng-template>
+			
+										<!-- <hr>
+												
+												<pre>From: {{ fromDate | json }} </pre>
+												<pre>To: {{ toDate | json }} </pre> -->
+			
+										<i class="icon_calendar"></i>
+									</div>
+						</div>
+						<div class="col-lg-2">
+							<input (click)="search()" type="submit" class="btn_search" value="Search">
+						</div>
+					</div>
+					<!-- /row -->
+				</form>
+			</div>
+		</div>
+	</div>
+	<img src="../assets/img/video_fix.png" alt="" class="header-video--media" data-video-src="video/intro"
+		data-teaser-source="video/intro" data-provider="" data-video-width="1920" data-video-height="960">
+	<video autoplay="true" loop="loop" muted="" id="teaser-video" class="teaser-video">
+		<source src="../../assets/video/intro.mp4" type="video/mp4">
+		<source src="../../assets/video/intro.ogv" type="video/ogg"></video>
+</section>
+<!-- /header-video -->
+
+<app-Hotel-Items-withFilters></app-Hotel-Items-withFilters>

@@ -1,0 +1,169 @@
+
+
+<div class="container margin_60_35">
+  <div class="row" *ngIf="showresults">
+      <aside class="col-lg-3 filter-col">
+     
+          <div id="filters_col" (click)="filtring()">
+            <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters"
+              id="filters_col_bt">Filters </a>
+            <div class="collapse show" id="collapseFilters">
+    
+              <div class="filter_type">
+                <div class="form-group  wide">
+                  <input type="text" name="flightfrom" id="flight-from" class="field-input form-control"
+                    placeholder="Enter Hotel Name" (blur)="ClearResults()" [(ngModel)]="SearchHotel"
+                    (ngModelChange)="filterItems($event)">
+                </div>
+              </div>
+    
+              <div class="filter_type custom-slider">
+                <h6>Pricing</h6>
+                <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"
+                  (valueChange)="onValueChange($event)" (highValueChange)="onHighValueChange($event)"></ng5-slider>
+              </div>
+    
+              <div class="filter_type">
+                <h6>Food Type</h6>
+                <ul>
+                  <!-- <li *ngFor="let category of tourscategories.docs">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" (change)="toggleVisibility($event)"
+                      value="{{category.category_id}}">
+                    <span class="custom-control-indicator"></span>
+                    {{category.name}}
+                  </label>
+                </li> -->
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="HB" (change)="toggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      Half Board
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="FB" (change)="toggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      Full Board
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="BB" (change)="toggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      Bed and Breakfast
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="RO" (change)="toggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      Room only
+                    </label>
+                  </li>
+    
+                </ul>
+              </div>
+    
+    
+              <div class="filter_type">
+                <h6>Rating</h6>
+                <ul>
+                  <!-- <li *ngFor="let category of tourscategories.docs">
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" (change)="toggleVisibility($event)"
+                        value="{{category.category_id}}">  
+                      <span class="custom-control-indicator"></span>
+                      {{category.name}}
+                    </label>
+                  </li> -->
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="5" (change)="rateToggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      <span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i
+                          class="icon_star"></i><i class="icon_star"></i></span> <small>(25)</small>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="4" (change)="rateToggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      <span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i
+                          class="icon_star"></i></span> <small>(25)</small>
+    
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="3" (change)="rateToggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      <span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
+                          class="icon_star"></i></span> <small>(25)</small>
+    
+                    </label>
+                  </li>
+    
+    
+                </ul>
+              </div>
+    
+    
+    
+            </div>
+            <!-- /collapse -->
+          </div>
+          <!-- /filters col -->
+        </aside>
+        <!-- /aside -->
+        <div class="col-lg-9" id="list_sidebar">
+    	<div class="isotope-wrapper search-results"   infiniteScroll
+		[infiniteScrollDistance]="4"
+		[infiniteScrollThrottle]="30"
+		(scrolled)="onResultsScroll()"
+		[scrollWindow]="true">
+			<h6>Search Results</h6>
+			<hr>
+			<!-- <h4 *ngIf="searchResult.data.hotels.length == 0">There are no results that match your search</h4> -->
+      <div class="box_list" *ngFor="let hotel of searchResult.data.hotels">
+        <div class="row no-gutters">
+          <div class="col-lg-5">
+            <figure>
+              <!-- <small>Parirs Centre</small> -->
+              <a routerLink="/hoteldetails/{{hotel.id}}"><img src="{{hotel.image}}" class="img-fluid" alt=""
+                  width="800" height="533">
+                <div class="read_more"><span>Read more</span></div>
+              </a>
+            </figure>
+          </div>
+          <div class="col-lg-7">
+            <div class="wrapper">
+              <!-- <a href="#0" class="wish_bt"></a> -->
+              <div class="cat_star">
+                <img src="{{hotel.ratingImage}}" alt="" srcset="">
+                <!-- <i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i
+                  class="icon_star"></i> -->
+                </div>
+              <h3><a routerLink="/hoteldetails/{{hotel.id}}">{{hotel.name}}</a></h3>
+              <p>{{hotel.address}}</p>
+              <p [innerHTML]="hotel.description"></p>
+              <span class="price">From <strong>£{{hotel.price}}</strong> /per person</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- /box_list -->
+	
+	
+	
+			</div>
+      <!-- /isotope-wrapper -->
+      </div>
+  </div>
+
+
+
+</div>
+<!-- /container -->

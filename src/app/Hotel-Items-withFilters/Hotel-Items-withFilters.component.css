@@ -1,0 +1,114 @@
+.filter-col{
+    padding-left: 0;
+    padding-right: 0;
+    }
+#range-slider.ng5-slider .ng5-slider.ng5-slider-pointer{
+  
+    width:15px!important;
+    height:15px;
+
+   }
+   ::ng-deep 
+.custom-slider 
+  .ng5-slider 
+    .ng5-slider-pointer {
+      background-color: #ed145b!important;
+      width: 3px;
+      height: 21px;
+      top: -4px;
+}
+::ng-deep .ng5-slider .ng5-slider-bar{
+height: 12px !important;
+}
+::ng-deep .ng5-slider .ng5-slider-selection{
+background-color: #ed145b!important;
+}
+::ng-deep .ng5-slider .ng5-slider-pointer:after{
+display: none;
+}
+::ng-deep .ng5-slider .ng5-slider-bubble{
+font-size: 13px !important;
+color: #333!important;
+/* left:0!important; */
+}
+
+
+
+.custom-checkbox {
+    min-height: 1rem;
+    padding-left: 0;
+    margin-right: 0;
+    cursor: pointer; 
+  }
+.custom-checkbox .custom-control-indicator {
+      content: "";
+      display: inline-block;
+      position: relative;
+      width: 33px;
+      height: 20px;
+      background-color: rgb(228, 228, 228);
+      border-radius: 20px;
+      margin-right: 10px;
+      -webkit-transition: background .3s ease;
+      transition: background .3s ease;
+      vertical-align: middle;
+      margin: 0 10px;
+      box-shadow: none; 
+    
+ }
+.custom-checkbox .custom-control-indicator:after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-color: rgb(255, 255, 255);;
+        border-radius: 21px;
+        box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+        left: -2px;
+        top: 1px;
+        -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+        transition: left .3s ease, background .3s ease, box-shadow .1s ease; 
+      }
+.custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+      background-color: rgb(172, 211, 115);
+      background-image: none;
+      box-shadow: none !important; 
+    }
+.custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:after {
+        background-color: rgb(172, 211, 115);
+        left: 13px; 
+      }
+.custom-checkbox .custom-control-input:focus ~ .custom-control-indicator {
+      box-shadow: none !important; 
+    }
+.checkbox ins{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background: rgb(255, 255, 255);
+    border: 0px;
+    opacity: 0;
+}
+.icheckbox_square-grey {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background-color: grey;
+    border: none;
+    cursor: pointer;
+}
+a#filters_col_bt{
+  margin-bottom: inherit;
+}
+.price strong{
+  font-size: 1.5rem;
+}

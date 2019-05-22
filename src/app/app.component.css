@@ -1,0 +1,27 @@
+
+
+    .slide-right{
+        -webkit-transform: translate(440px,0);
+        -ms-transform: translate(440px,0);
+        transform: translate(440px,0);
+        -webkit-transform: translate3d(440px,0,0);
+        transform: translate3d(440px,0,0);
+    }
+    
+    @media (max-width: 991px){
+    .slide-right {
+        -webkit-transform: translate(304px,0);
+        transform: translate(304px,0);
+        -webkit-transform: translate3d(304px,0,0);
+        transform: translate3d(304px,0,0);
+    }
+    }
+    
+    @media (max-width: 370px){
+        .slide-right {
+            -webkit-transform: translate(260px,0);
+            transform: translate(260px,0);
+            -webkit-transform: translate3d(260px,0,0);
+            transform: translate3d(260px,0,0);
+        }
+    }

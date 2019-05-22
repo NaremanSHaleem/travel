@@ -1,0 +1,20 @@
+.side-header{
+    font-weight: 700; 
+    color: #f93;
+  }
+  .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after{
+    opacity: none!important;
+  }
+  .biggest-icon {
+    font-size: 21px;
+    color: #fff;
+}
+.sidebar-image{
+  margin: 4% auto;
+}
+.nice-select{
+  height: 45px!important;
+  line-height: 42px!important;
+  border-radius: 3px;
+  border: 1px solid #d2d8dd;
+}

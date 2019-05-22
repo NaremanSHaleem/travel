@@ -1,0 +1,318 @@
+<main>
+	<section class="hero_in tours_detail"
+		style="background: url('../../assets/img/hotels_detail.jpg')center center no-repeat; ">
+
+		<div class="wrapper">
+			<div class="container">
+				<h1 class="fadeInUp"><span></span>
+					<h1>{{hotel_details.data.hotel.name}}</h1>
+				</h1>
+				<div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i
+						class="icon_star"></i></div>
+			</div>
+			<!-- <span class="magnific-gallery"> -->
+			<!-- <a ></a> -->
+			<!-- <img src="https://mres.majortravel.co.uk/{{tour_details.Item.itineraries[0].Destination.featured_image}}" alt="" > -->
+			<!-- <a href="https://mres.majortravel.co.uk/{{tour_details.Item.itineraries[0].Destination.featured_image}}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a> -->
+			<!-- <a *ngFor="let image of tour_details.Item.images" href="https://mres.majortravel.co.uk/{{image.image_name}}" title="Photo title" data-effect="mfp-zoom-in"></a> -->
+
+			<!-- </span> -->
+		</div>
+	</section>
+	<!--/hero_in-->
+
+	<div class="bg_color_1">
+		<nav class="secondary_nav sticky_horizontal">
+			<div class="container">
+				<ul class="clearfix">
+					<!-- <li><a href="#description" class="active">Description</a></li> -->
+
+					<li><a href="#sidebar">Booking</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container margin_60_35">
+			<div class="row">
+
+				<div class="col-lg-8">
+					<section id="description">
+						<h2>Description</h2>
+						<p [innerHTML]="hotel_details.data.hotel.accomIntro"></p>
+						<p [innerHTML]="hotel_details.data.hotel.description"></p>
+						<p [innerHTML]="hotel_details.data.hotel.otherDetail"></p>
+						<ul class="hotel_facilities">
+							<li *ngFor="let facility of hotel_details.data.hotel.facilities">{{facility.name}} <h6></h6>
+							</li>
+
+						</ul>
+						<!-- <div class="row">
+							<div class="col-lg-6">
+								<ul class="bullets">
+									<li>Dolorem mediocritatem</li>
+									<li>Mea appareat</li>
+									<li>Prima causae</li>
+									<li>Singulis indoctum</li>
+								</ul>
+							</div>
+							<div class="col-lg-6">
+								<ul class="bullets">
+									<li>Timeam inimicus</li>
+									<li>Oportere democritum</li>
+									<li>Cetero inermis</li>
+									<li>Pertinacia eum</li>
+								</ul>
+							</div>
+						</div> -->
+						<!-- /row -->
+						<hr>
+						<h3>Gallery</h3>
+						<div id="instagram-feed-hotel" class="clearfix">
+							<div class="col-md-2 col-lg-2 instagramPhoto"
+								*ngFor="let img of hotel_details.data.hotel.images">
+								<img src="{{img.image}}" class="img-fluid" alt="">
+							</div>
+
+						</div>
+						<hr>
+						<h3>Rooms</h3>
+						<p [innerHTML]="hotel_details.data.hotel.locationIntro"></p>
+						<div class="room_type first" *ngFor="let roo of hotel_details.data.hotel.rooms | keyvalue">
+							<div class="row">
+
+								<!-- <div class="col-md-4">
+									<img src="../../assets/img/room_list_1.jpg" class="img-fluid" alt="">
+								</div> -->
+								<div class="col-md-12">
+									<h4>{{roo.key}}</h4>
+									<p [innerHTML]="roo.value[0].contents"></p>
+											<!-- <ul class="hotel_facilities">
+											<li>Room only <h6 >£810</h6> </li>
+											<li>Bed and breakfast <h6>£810 </h6></li>
+											<li>Half Board <h6>£810 </h6></li>
+											<li>Full Board <h6>£810 </h6></li>
+									</ul> -->
+								</div>
+							</div>
+							<!-- /row -->
+						</div>
+						<!-- /rom_type -->
+
+
+						<hr>
+						<h3>Location</h3>
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13814.673303893709!2d31.2451209!3d30.046371899999997!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584089d2489793%3A0x2b59607b9ca4cfa6!2sCaf%C3%A9+Riche!5e0!3m2!1sen!2seg!4v1557301834072!5m2!1sen!2seg"
+							width="500" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+						<!-- <div id="map" class="map map_single add_bottom_30"></div> -->
+						<!-- End Map -->
+
+						<hr>
+
+						<div class="reviews-container">
+
+							<div class="review-box clearfix">
+								<figure class="rev-thumb"><img src="../../assets/img/avatar1.jpg" alt="">
+								</figure>
+								<div class="rev-content">
+									<div class="rating">
+										<i class="icon_star voted"></i><i class="icon_star voted"></i><i
+											class="icon_star voted"></i><i class="icon_star voted"></i><i
+											class="icon_star"></i>
+									</div>
+									<div class="rev-info">
+										Admin – April 03, 2016:
+									</div>
+									<div class="rev-text">
+										<p>
+											Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar
+											hendrerit. Cum sociis natoque penatibus et magnis dis
+										</p>
+									</div>
+								</div>
+							</div>
+							<!-- /review-box -->
+							<div class="review-box clearfix">
+								<figure class="rev-thumb"><img src="../../assets/img/avatar2.jpg" alt="">
+								</figure>
+								<div class="rev-content">
+									<div class="rating">
+										<i class="icon-star voted"></i><i class="icon_star voted"></i><i
+											class="icon_star voted"></i><i class="icon_star voted"></i><i
+											class="icon_star"></i>
+									</div>
+									<div class="rev-info">
+										Ahsan – April 01, 2016:
+									</div>
+									<div class="rev-text">
+										<p>
+											Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar
+											hendrerit. Cum sociis natoque penatibus et magnis dis
+										</p>
+									</div>
+								</div>
+							</div>
+							<!-- /review-box -->
+							<div class="review-box clearfix">
+								<figure class="rev-thumb"><img src="../../assets/img/avatar3.jpg" alt="">
+								</figure>
+								<div class="rev-content">
+									<div class="rating">
+										<i class="icon-star voted"></i><i class="icon_star voted"></i><i
+											class="icon_star voted"></i><i class="icon_star voted"></i><i
+											class="icon_star"></i>
+									</div>
+									<div class="rev-info">
+										Sara – March 31, 2016:
+									</div>
+									<div class="rev-text">
+										<p>
+											Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar
+											hendrerit. Cum sociis natoque penatibus et magnis dis
+										</p>
+									</div>
+								</div>
+							</div>
+							<!-- /review-box -->
+						</div>
+						<!-- /review-container -->
+					</section>
+
+					<hr>
+
+
+				</div>
+				<!-- /col -->
+
+				<aside class="col-lg-4" id="sidebar" [class.sticky]="sticky" #stickyMenu>
+					<div class="box_detail booking">
+						<h5 class="side-header">{{hotel_details.data.hotel.name}}</h5>
+						<div class="price">
+							<span>500£ <small>person</small></span>
+							<!-- <div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div> -->
+						</div>
+
+						<div class="form-group">
+							<!-- <input class="form-control" type="text" name="dates" placeholder="When.."> -->
+							<!-- <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">		</ngb-datepicker> -->
+							<div class="input-group">
+								<input class="form-control" placeholder="When.." name="dp" ngbDatepicker
+									#d="ngbDatepicker" (click)="toggle = !toggle" value="{{ mydate +' > ' + mydate2}}">
+							</div>
+							<ngb-datepicker [ngClass]="{'open' : toggle }" (blur)="toggle = false" #dp
+								(select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+								outsideDays="hidden">
+							</ngb-datepicker>
+
+							<ng-template #t let-date let-focused="focused">
+								<span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+									[class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+									(mouseleave)="hoveredDate = null">
+									{{ date.day }}
+								</span>
+							</ng-template>
+
+							<!-- <hr>
+									
+									<pre>From: {{ fromDate | json }} </pre>
+									<pre>To: {{ toDate | json }} </pre> -->
+
+							<i class="icon_calendar"></i>
+						</div>
+							<div class="form-group">
+								<div class="panel-dropdown" (blur)="toggle3 = false">
+									<a (click)="toggle3 = !toggle3" onchange="total()">Guests <span
+											class="qtyTotal">{{totalnumberofpasangers}}</span></a>
+									<div class="panel-dropdown-content right" [ngClass]="{'dropit' : toggle3 }">
+										<div class="dd-title">
+											<label>Select rooms passangers</label>
+										</div>
+										<div class="room" *ngFor="let room of rooms">
+											<h6>Room {{room.id}}<strong id="small-minus" (click)="removeRoom(room.id)"
+													*ngIf="room.id > 1">-</strong></h6>
+											<div class="qtyButtons">
+												<label>Adults</label>
+												<div (click)="removeAdult(room.id)" class="qtyDec"></div><input
+													type="text" name="qtyInput" value="{{room.adults}}">
+												<div (click)="addAdult(room.id)" class="qtyInc"></div>
+											</div>
+											<div class="qtyButtons">
+												<label>Children</label>
+												<div (click)="removeChild(room.id)" class="qtyDec"></div><input
+													type="text" name="qtyInput" value="{{room.children.length}}">
+												<div (click)="addAChild(room.id)" class="qtyInc"></div>
+											</div>
+											<div>
+												<form>
+													<div class="col-lg-6 child-age"
+														*ngFor="let childage of room.children; let i = index;">
+														<div>
+
+															<input type="text" placeholder="Child {{i+1}} age"
+																style="width:100%" name="ageItem{{i+1}}" value="{{childage.age}}"
+																(input)="agevaluechange($event, room, i)">
+														</div>
+													</div>
+
+												</form>
+											</div>
+										</div>
+										<div class="addroom" (click)="addRoom(rooms.length)">
+											<strong>+</strong> Add room
+
+										</div>
+									</div>
+								</div>
+							</div>
+						
+
+						<div class="nice-select wide " tabindex="0" [ngClass]="{'open' : toggle5 }"
+							(click)="toggle5 = !toggle3" (blur)="toggle5 = false">
+							<span class="current" name="selectedroomtype" ngDefaultControl
+								[(ngModel)]="selectedRoomType">{{selectedRoomType}}</span>
+							<ul class="list">
+								<!-- <li  class="option selected focus">selectedRoomType</li> -->
+								<!-- <li value="{{category.category_id}}" class="option"
+								*ngFor="let category of tourscategories" (click)="selectroomtype($event)">
+								{{category.name}} </li> -->
+								<li class="option " (click)="selectroomtype($event)" *ngFor="let room of hotel_details.data.hotel.rooms | keyvalue">{{room.key}}</li>
+								<!-- <li class="option " (click)="selectroomtype($event)">Double Room</li>
+								<li class="option " (click)="selectroomtype($event)">Suite Room</li> -->
+
+							</ul>
+						</div>
+
+
+						<div class="nice-select wide " tabindex="0" [ngClass]="{'open' : toggle4 }"
+							(click)="toggle4 = !toggle4" (blur)="toggle4 = false">
+							<span class="current" name="selectedroomtype" ngDefaultControl
+								[(ngModel)]="selectedRoomType">{{selectedFoodType}}</span>
+							<ul class="list">
+								<!-- <li  class="option selected focus">selectedRoomType</li> -->
+								<!-- <li value="{{category.category_id}}" class="option"
+							*ngFor="let category of tourscategories" (click)="selectroomtype($event)">
+							{{category.name}} </li> -->
+								<li class="option " (click)="selectfoodtype($event)">Room only</li>
+								<li class="option " (click)="selectfoodtype($event)">Bed and breakfast</li>
+								<li class="option " (click)="selectfoodtype($event)">Half board</li>
+								<li class="option " (click)="selectfoodtype($event)">Full Board</li>
+
+							</ul>
+						</div>
+						<a (click)="checkout()" class="btn_1 full-width purchase">Checkout</a>
+						<!-- <a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a> -->
+						<div class="text-center"><small>No money charged in this step</small></div>
+					</div>
+					<!-- <ul class="share-buttons">
+							<li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
+							<li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Tweet</a></li>
+							<li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
+						</ul> -->
+				</aside>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /bg_color_1 -->
+</main>
+<!--/main-->

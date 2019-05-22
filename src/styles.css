@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+.blue-text{
+    color: blue;
+}
+.orange-text{
+    color: orange;
+}
+.lightBlue-text{
+    color: #17a2b8;
+}
+.dark-gray{
+    color: #343a40;
+}
+.bigger-icon{
+    font-size: 17px;
+}
+/* #login, #register{
+    background: url(src/assets/img/slide_1.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+} */
+#login aside, #register aside{
+    background-color: #ffffffdb!important;
+}
+html #mm-blocker.mm-slideout{
+   display: none!important;
+}

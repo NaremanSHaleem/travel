@@ -23,9 +23,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/style.css",
+              "src/assets/css/vendors.css",
+              "src/assets/css/custom.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/video_header.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
