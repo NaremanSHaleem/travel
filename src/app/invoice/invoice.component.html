@@ -1,0 +1,176 @@
+<div class="container">
+		<div class="row" style="margin: 3% 0;">
+			<div class="col">
+        <div class="row" style="margin: 3% 0;">
+<img src="{{urlPath}}/assets/img/stamped-logo-purple.png"  style="margin: 0 auto;" height="200px" alt="">
+        </div>
+				<div class="row" style="margin: 3% 0;">
+					<h3 style="margin: 0 auto;">Booking Confirmation</h3>
+				</div>
+				<div class="row" style="margin: 3% 0;">
+					<div class="col-md-3 col-sm-12"><b>Name:</b>{{paymentInfo.card_holder}}</div>
+					<div class="col-md-3 col-sm-12"><b>Booking Date:</b> {{today}}</div>
+					<div class="col-md-3 col-sm-12"><b>Destination:</b> {{destination}}</div>
+					<div class="col-md-3 col-sm-12"><b>Booking Reference:</b> xxxx</div>
+				</div>
+				<div class="row" style="margin: 3% 0;">
+					<h3 style="margin: 0 auto;">Information</h3>
+				</div>
+				<div class="row" style="margin: 3% 0;">
+					<div class="" style="margin-right: 2%;"><img src="{{bookedhotel.image}}" height="250px" alt=""></div>
+					<div class="" style="padding-top: 2%;">
+              <i *ngFor="let i of Arr(+bookedhotel.rating).fill(1)" class="icon_star" style="color: #FFC107;"></i>
+						<h5 style="margin:0;">{{bookedhotel.name}}</h5> <br>
+						<p>{{bookedhotel.address}}</p>
+					</div>
+				</div>
+				<div class="row" style="margin: 3% 0;">
+					<div class="col-md-3 col-sm-12">
+						<h3>Accommodation</h3>
+						No. of Passangers: {{numberOfPassangers}} <br>
+						No. of Nights: {{bookedhotel.nightsCount}}
+					</div>
+					<div class="col-md-2 col-sm-12">
+						<b>Check In: </b> <br>
+						{{checkIn}}
+					</div>
+					<div class="col-md-2 col-sm-12"><b>Check Out: </b> <br>
+						{{checkOut}} <br></div>
+					<div class="col-md-5 col-sm-12">
+						<b>Information:</b><br>
+				<p style="margin-bottom: 0">Room type: {{roomType}}  </p> 
+						<!-- <p>Double or Twin DELUXE <br></p>
+						<p>Double or Twin DELUXE <br></p> -->
+						Meal Plan:  {{boardType}}
+					</div>
+				</div>
+				<div class="row" style="background-color: #e4e4e4; padding: 10px; margin: 3% 0;">
+					<div class="col-md-2">
+						<b>Total Amount:</b>
+					</div>
+					<div class="col-md-10">
+						<b style="font-size: 20px;">£{{ Total}}</b>
+					</div>
+				</div>
+				<div class="row" style="margin: 3% 0;">
+					<b>Note(s):</b><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+				<div class="row" style="background-color: #121921;  padding: 20px 30px; color: #fff; margin: 3% 0;">
+					<div class="col-md-4 col-sm-12" style="text-align: center">
+							<img src="{{urlPath}}/assets/img/stamped-logo.png" width="120px" alt="">
+					</div>
+					<div class="col-md-4 col-sm-12" style="padding-top:1%; text-align: center">
+						<h5 style="color: #fff;">Contact with Us:</h5>
+						0203 393 1093 <br>
+						info@stamped.travel
+					</div>
+					<div class="col-md-4 col-sm-12" style="text-align: center">
+						<div class="row" style="padding-top:5%; margin: 3% 0;">
+							<div class="col-md-6 col-sm-12">
+									<img src="{{urlPath}}/assets/img/logo-abta.png" alt="">
+							</div>
+							<div class="col-md-6 col-sm-12">
+									<img src="{{urlPath}}/assets/img/logo-atol.png" alt="">
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+<!-- <div class="container" style="margin-bottom: 3%;">
+  <div class="row">
+    <div class="col-12">
+      <div class="invoice-title add_top_30">
+        <h2>Invoice</h2>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-6">
+          <address>
+            <strong>Billed To:</strong><br>
+            {{paymentInfo.card_holder}}<br>
+          </address>
+          <address>
+            <strong>Order Date:</strong><br>
+            {{today}}<br><br>
+          </address>
+        </div>
+         <div class="col-6 text-right">
+
+    </div> 
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <address>
+            <strong>Payment Method:</strong><br>
+            {{cardType}} ending **** {{paymentInfo.CVC}}<br>
+            {{user.email}}
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="add_top_15">
+        <h3><strong>Order summary</strong></h3>
+        <div class="row">
+
+          <div class="col-md-4">
+            <h5 style="color: #f93;">{{bookedhotel.name}}</h5>
+            <img src="{{bookedhotel.image}}" alt="hotel" style="width: 100%;">
+          </div>
+          <div class="col-md-8" >
+              <div class="table-responsive">
+
+
+                  <table class="table table-condensed">
+        
+                    <tbody>
+                        <tr>
+                            <td><strong>Hotel</strong></td>
+                            <td class="text-center">{{bookedhotel.name}}</td>
+                          </tr>
+                          <tr>
+                      <tr>
+                        <td><strong>Room</strong></td>
+                        <td class="text-center">{{roomType}} - {{boardType}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Passangers</strong></td>
+                        <td class="text-center">{{numberOfPassangers}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Nights</strong></td>
+                        <td class="text-center">{{bookedhotel.nightsCount}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Total</strong></td>
+                        <td class="text-center">£ {{ Total}}</td>
+                      </tr>
+        
+                    </tbody>
+                  </table>
+                </div>
+            <div><strong>Room </strong>{{roomType}} {{boardType}}</div><br>
+            <div><strong>Passangers </strong>{{numberOfPassangers}}</div><br>
+            <div><strong>Nights </strong>{{bookedhotel.nightsCount}}</div><br>
+            <div><strong>Total </strong>£{{Total}}</div>
+
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -5,6 +5,7 @@ import { TokenCheckService } from 'src/assets/services/token-check.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import {Location} from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import {Location} from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
+  urlPath = environment.urlPath;
   loginForm: FormGroup;
   submitted = false;
   invalid: any;
@@ -46,8 +48,9 @@ export class LoginComponent implements OnInit {
         this.loginservice.login(this.loginForm) .pipe(first())
         .subscribe(
             data => {
-              this.tokencheckservice.token = data['token']; 
-              this.tokencheckservice.Userdata = data['profile'];
+              console.log(data);
+              this.tokencheckservice.token = data['data']['token']; 
+              this.tokencheckservice.Userdata = data['data']['user'];
               // if(this.router.url == "/login." ){
               //   this._location.back();
               // }else

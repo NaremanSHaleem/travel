@@ -1,6 +1,7 @@
-<main>
+<main infiniteScroll (scrolled)="scrollHandler()" [infiniteScrollDistance]="0.25" [infiniteScrollUpDistance]="1.5"
+[infiniteScrollThrottle]="50"  alwaysCallback (scrolledUp)="scrollUpHandler()">
 	<section class="hero_in tours_detail"
-		style="background: url('../../assets/img/hotels_detail.jpg')center center no-repeat; ">
+		style="background: url('{{urlPath}}/assets/img/hotels_detail.jpg')center center no-repeat; ">
 
 		<div class="wrapper">
 			<div class="container">
@@ -20,8 +21,8 @@
 		</div>
 	</section>
 	<!--/hero_in-->
-
-	<div class="bg_color_1">
+<h2 *ngIf="NoSearchResults">There are no results that match your search</h2>
+	<div class="bg_color_1" *ngIf="!NoSearchResults" >
 		<nav class="secondary_nav sticky_horizontal">
 			<div class="container">
 				<ul class="clearfix">
@@ -40,30 +41,9 @@
 						<p [innerHTML]="hotel_details.data.hotel.accomIntro"></p>
 						<p [innerHTML]="hotel_details.data.hotel.description"></p>
 						<p [innerHTML]="hotel_details.data.hotel.otherDetail"></p>
-						<ul class="hotel_facilities">
-							<li *ngFor="let facility of hotel_details.data.hotel.facilities">{{facility.name}} <h6></h6>
-							</li>
-
-						</ul>
-						<!-- <div class="row">
-							<div class="col-lg-6">
-								<ul class="bullets">
-									<li>Dolorem mediocritatem</li>
-									<li>Mea appareat</li>
-									<li>Prima causae</li>
-									<li>Singulis indoctum</li>
-								</ul>
-							</div>
-							<div class="col-lg-6">
-								<ul class="bullets">
-									<li>Timeam inimicus</li>
-									<li>Oportere democritum</li>
-									<li>Cetero inermis</li>
-									<li>Pertinacia eum</li>
-								</ul>
-							</div>
-						</div> -->
-						<!-- /row -->
+						<!-- <ul class="hotel_facilities">
+							<li *ngFor="let facility of hotel_details.data.hotel.facilities">{{facility.name}} </li>
+						</ul> -->
 						<hr>
 						<h3>Gallery</h3>
 						<div id="instagram-feed-hotel" class="clearfix">
@@ -71,110 +51,41 @@
 								*ngFor="let img of hotel_details.data.hotel.images">
 								<img src="{{img.image}}" class="img-fluid" alt="">
 							</div>
-
 						</div>
 						<hr>
 						<h3>Rooms</h3>
 						<p [innerHTML]="hotel_details.data.hotel.locationIntro"></p>
-						<div class="room_type first" *ngFor="let roo of hotel_details.data.hotel.rooms | keyvalue">
+						<div class="room_type first" *ngFor="let roo of roomtypes | keyvalue">
 							<div class="row">
-
 								<!-- <div class="col-md-4">
-									<img src="../../assets/img/room_list_1.jpg" class="img-fluid" alt="">
+									<img src="/assets/img/room_list_1.jpg" class="img-fluid" alt="">
 								</div> -->
 								<div class="col-md-12">
 									<h4>{{roo.key}}</h4>
-									<p [innerHTML]="roo.value[0].contents"></p>
-											<!-- <ul class="hotel_facilities">
-											<li>Room only <h6 >£810</h6> </li>
-											<li>Bed and breakfast <h6>£810 </h6></li>
-											<li>Half Board <h6>£810 </h6></li>
-											<li>Full Board <h6>£810 </h6></li>
-									</ul> -->
+									<ul class="">
+										<li *ngFor="let roomdetails of roo.value">
+											<h6 style="display: inline-block;">{{roomdetails.boardType  }}</h6>
+											<p style="display: inline-block; margin-bottom: 1rem;">
+												‎£{{roomdetails.price}}</p>
+										</li>
+									</ul>
 								</div>
 							</div>
 							<!-- /row -->
 						</div>
 						<!-- /rom_type -->
-
-
 						<hr>
 						<h3>Location</h3>
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13814.673303893709!2d31.2451209!3d30.046371899999997!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584089d2489793%3A0x2b59607b9ca4cfa6!2sCaf%C3%A9+Riche!5e0!3m2!1sen!2seg!4v1557301834072!5m2!1sen!2seg"
-							width="500" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-						<!-- <div id="map" class="map map_single add_bottom_30"></div> -->
-						<!-- End Map -->
-
-						<hr>
-
-						<div class="reviews-container">
-
-							<div class="review-box clearfix">
-								<figure class="rev-thumb"><img src="../../assets/img/avatar1.jpg" alt="">
-								</figure>
-								<div class="rev-content">
-									<div class="rating">
-										<i class="icon_star voted"></i><i class="icon_star voted"></i><i
-											class="icon_star voted"></i><i class="icon_star voted"></i><i
-											class="icon_star"></i>
-									</div>
-									<div class="rev-info">
-										Admin – April 03, 2016:
-									</div>
-									<div class="rev-text">
-										<p>
-											Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar
-											hendrerit. Cum sociis natoque penatibus et magnis dis
-										</p>
-									</div>
-								</div>
-							</div>
-							<!-- /review-box -->
-							<div class="review-box clearfix">
-								<figure class="rev-thumb"><img src="../../assets/img/avatar2.jpg" alt="">
-								</figure>
-								<div class="rev-content">
-									<div class="rating">
-										<i class="icon-star voted"></i><i class="icon_star voted"></i><i
-											class="icon_star voted"></i><i class="icon_star voted"></i><i
-											class="icon_star"></i>
-									</div>
-									<div class="rev-info">
-										Ahsan – April 01, 2016:
-									</div>
-									<div class="rev-text">
-										<p>
-											Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar
-											hendrerit. Cum sociis natoque penatibus et magnis dis
-										</p>
-									</div>
-								</div>
-							</div>
-							<!-- /review-box -->
-							<div class="review-box clearfix">
-								<figure class="rev-thumb"><img src="../../assets/img/avatar3.jpg" alt="">
-								</figure>
-								<div class="rev-content">
-									<div class="rating">
-										<i class="icon-star voted"></i><i class="icon_star voted"></i><i
-											class="icon_star voted"></i><i class="icon_star voted"></i><i
-											class="icon_star"></i>
-									</div>
-									<div class="rev-info">
-										Sara – March 31, 2016:
-									</div>
-									<div class="rev-text">
-										<p>
-											Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar
-											hendrerit. Cum sociis natoque penatibus et magnis dis
-										</p>
-									</div>
-								</div>
-							</div>
-							<!-- /review-box -->
+						<div id="map" class="map map_single add_bottom_30">
+							{{moreHotelDetails.latCoordinate}}
+							{{moreHotelDetails.lntCoordinate}}
+							<agm-map style="height:500px" [zoom]='19' [latitude]='+moreHotelDetails.latCoordinate' [longitude]='+moreHotelDetails.lntCoordinate'>
+									<agm-marker [latitude]='+moreHotelDetails.latCoordinate' [longitude]='+moreHotelDetails.lntCoordinate'></agm-marker>
+								  </agm-map>
 						</div>
-						<!-- /review-container -->
+						<!-- End Map -->
+						<hr>
+				
 					</section>
 
 					<hr>
@@ -187,7 +98,7 @@
 					<div class="box_detail booking">
 						<h5 class="side-header">{{hotel_details.data.hotel.name}}</h5>
 						<div class="price">
-							<span>500£ <small>person</small></span>
+							<span>£{{hotelCost}}</span>
 							<!-- <div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div> -->
 						</div>
 
@@ -218,86 +129,74 @@
 
 							<i class="icon_calendar"></i>
 						</div>
-							<div class="form-group">
-								<div class="panel-dropdown" (blur)="toggle3 = false">
-									<a (click)="toggle3 = !toggle3" onchange="total()">Guests <span
-											class="qtyTotal">{{totalnumberofpasangers}}</span></a>
-									<div class="panel-dropdown-content right" [ngClass]="{'dropit' : toggle3 }">
-										<div class="dd-title">
-											<label>Select rooms passangers</label>
+						<div class="form-group">
+							<div class="panel-dropdown" (blur)="toggle3 = false">
+								<a (click)="toggle3 = !toggle3" onchange="total()">Guests <span
+										class="qtyTotal">{{totalnumberofpasangers}}</span></a>
+								<div class="panel-dropdown-content right" [ngClass]="{'dropit' : toggle3 }">
+									<div class="dd-title">
+										<label>Select rooms passangers</label>
+									</div>
+									<div class="room" *ngFor="let room of rooms">
+										<h6>Room {{room.id}}<strong id="small-minus" (click)="removeRoom(room.id)"
+												*ngIf="room.id > 1">-</strong></h6>
+										<div class="qtyButtons">
+											<label>Adults</label>
+											<div (click)="removeAdult(room.id)" class="qtyDec"></div><input type="text"
+												name="qtyInput" value="{{room.adults}}">
+											<div (click)="addAdult(room.id)" class="qtyInc"></div>
 										</div>
-										<div class="room" *ngFor="let room of rooms">
-											<h6>Room {{room.id}}<strong id="small-minus" (click)="removeRoom(room.id)"
-													*ngIf="room.id > 1">-</strong></h6>
-											<div class="qtyButtons">
-												<label>Adults</label>
-												<div (click)="removeAdult(room.id)" class="qtyDec"></div><input
-													type="text" name="qtyInput" value="{{room.adults}}">
-												<div (click)="addAdult(room.id)" class="qtyInc"></div>
-											</div>
-											<div class="qtyButtons">
-												<label>Children</label>
-												<div (click)="removeChild(room.id)" class="qtyDec"></div><input
-													type="text" name="qtyInput" value="{{room.children.length}}">
-												<div (click)="addAChild(room.id)" class="qtyInc"></div>
-											</div>
-											<div>
-												<form>
-													<div class="col-lg-6 child-age"
-														*ngFor="let childage of room.children; let i = index;">
-														<div>
+										<div class="qtyButtons">
+											<label>Children</label>
+											<div (click)="removeChild(room.id)" class="qtyDec"></div><input type="text"
+												name="qtyInput" value="{{room.children.length}}">
+											<div (click)="addAChild(room.id)" class="qtyInc"></div>
+										</div>
+										<div>
+											<form>
+												<div class="col-lg-6 child-age"
+													*ngFor="let childage of room.children; let i = index;">
+													<div>
 
-															<input type="text" placeholder="Child {{i+1}} age"
-																style="width:100%" name="ageItem{{i+1}}" value="{{childage.age}}"
-																(input)="agevaluechange($event, room, i)">
-														</div>
+														<input type="text" placeholder="Child {{i+1}} age"
+															style="width:100%" name="ageItem{{i+1}}"
+															value="{{childage.age}}"
+															(input)="agevaluechange($event, room, i)">
 													</div>
+												</div>
 
-												</form>
-											</div>
+											</form>
 										</div>
-										<div class="addroom" (click)="addRoom(rooms.length)">
-											<strong>+</strong> Add room
+									</div>
+									<div class="addroom" (click)="addRoom(rooms.length)">
+										<strong>+</strong> Add room
 
-										</div>
 									</div>
 								</div>
 							</div>
-						
+						</div>
+
 
 						<div class="nice-select wide " tabindex="0" [ngClass]="{'open' : toggle5 }"
 							(click)="toggle5 = !toggle3" (blur)="toggle5 = false">
 							<span class="current" name="selectedroomtype" ngDefaultControl
 								[(ngModel)]="selectedRoomType">{{selectedRoomType}}</span>
 							<ul class="list">
-								<!-- <li  class="option selected focus">selectedRoomType</li> -->
-								<!-- <li value="{{category.category_id}}" class="option"
-								*ngFor="let category of tourscategories" (click)="selectroomtype($event)">
-								{{category.name}} </li> -->
-								<li class="option " (click)="selectroomtype($event)" *ngFor="let room of hotel_details.data.hotel.rooms | keyvalue">{{room.key}}</li>
-								<!-- <li class="option " (click)="selectroomtype($event)">Double Room</li>
-								<li class="option " (click)="selectroomtype($event)">Suite Room</li> -->
-
+								<li class="option " (click)="selectroomtype($event)"
+									*ngFor="let room of roomtypes | keyvalue">{{room.key}}</li>
 							</ul>
 						</div>
-
-
 						<div class="nice-select wide " tabindex="0" [ngClass]="{'open' : toggle4 }"
 							(click)="toggle4 = !toggle4" (blur)="toggle4 = false">
-							<span class="current" name="selectedroomtype" ngDefaultControl
-								[(ngModel)]="selectedRoomType">{{selectedFoodType}}</span>
+							<span class="current" name="selectedfoodtype" ngDefaultControl
+								[(ngModel)]="selectedFoodType">{{selectedFoodType}}</span>
 							<ul class="list">
-								<!-- <li  class="option selected focus">selectedRoomType</li> -->
-								<!-- <li value="{{category.category_id}}" class="option"
-							*ngFor="let category of tourscategories" (click)="selectroomtype($event)">
-							{{category.name}} </li> -->
-								<li class="option " (click)="selectfoodtype($event)">Room only</li>
-								<li class="option " (click)="selectfoodtype($event)">Bed and breakfast</li>
-								<li class="option " (click)="selectfoodtype($event)">Half board</li>
-								<li class="option " (click)="selectfoodtype($event)">Full Board</li>
 
+								<li class="option " (click)="selectfoodtype($event)"
+									*ngFor="let board of roomboards">{{board.boardType}}</li>
 							</ul>
 						</div>
+						<input (click)="search()" type="submit" class="btn_search" value="Search">
 						<a (click)="checkout()" class="btn_1 full-width purchase">Checkout</a>
 						<!-- <a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a> -->
 						<div class="text-center"><small>No money charged in this step</small></div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckoutService } from 'src/assets/services/checkout.service';
+import { TokenCheckService } from 'src/assets/services/token-check.service';
 
 @Component({
   selector: 'app-order-finished',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderFinishedComponent implements OnInit {
 
-  constructor() { }
+  user;
+  constructor(private tokencheckoutservice: TokenCheckService) { }
 
   ngOnInit() {
+    this.user = this.tokencheckoutservice.Userdata;
+    console.log(this.user);
   }
 
 }

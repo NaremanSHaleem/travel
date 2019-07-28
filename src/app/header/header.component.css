@@ -4,3 +4,7 @@
     height: 35px;
     border-radius: 50%;
   }
+  .contacts a{
+    padding: 0px 2%;
+    color: #fff;
+  }

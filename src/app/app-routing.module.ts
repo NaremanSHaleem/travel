@@ -6,8 +6,15 @@ import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { BookingComponent } from './booking/booking.component';
+import { HotelItemsWithFiltersComponent } from './Hotel-Items-withFilters/Hotel-Items-withFilters.component';
 
 const routes: Routes = [
+  {
+    path: 'booking',
+    component: BookingComponent,
+    data: { title: 'Booking' }
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -25,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'hotels',
-    component: HotelsListComponent,
+    component: HotelItemsWithFiltersComponent,
     data: { title: 'Hotels List' }
   },
   {

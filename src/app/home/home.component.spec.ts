@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { HomeComponent } from './home.component';
+import { getCurrentView } from '@angular/core/src/render3';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;

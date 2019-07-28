@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/hotels-app",
-            "index": "src/index.html",
+            "index": "src/index.prod.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
@@ -59,17 +59,41 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "customProd":{
+              "fileReplacements": [
+                {
+                  "replace": "src/index.prod.html",
+                  "with": "src/index.html"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hotels-app:build"
+            "browserTarget": "hotels-app:build:customProd"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hotels-app:build:production"
+              "browserTarget": "hotels-app:build:customProd"
             }
           }
         },

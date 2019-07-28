@@ -70,6 +70,7 @@
     left: 0;
     top: -5px;
     cursor: pointer;
+    margin: 0 1%;
 }
 .addroom{
     text-align: center;
@@ -81,6 +82,7 @@ ngb-datepicker{
     position: absolute;
     z-index: 9999;
     right: -0.6%;
+    top: 58px;
     color: #555;
   }
     .custom-day {
@@ -109,11 +111,14 @@ ngb-datepicker{
       }
 @media (max-width: 1024px){
 #hero_video {
-    background: url(../../assets/img/videohome_section_mob.jpg) #ccc!important;
+    background: url(/assets/img/videohome_section_mob.jpg) #ccc!important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+.container{
+    /* margin-top: -56%; */
 }
 .panel-dropdown .panel-dropdown-content {
     width: 100%;
@@ -135,7 +140,7 @@ ngb-datepicker{
     /* padding-left:0.4rem;  */
 }
 ::ng-deep .header-video{
-    height: 800px!important;
+    height: 704px!important;
 }
 }
 
@@ -147,4 +152,141 @@ ngb-datepicker{
         top: -5px;
         margin-left: 6px;
         padding-left: 1px;
+}
+#bookingconfirmation{
+    display: block;
+    min-width: 100%;
+    height: auto;
+    }
+i.passangersTabIcon {
+    line-height: 1.7;
+    text-align: center;
+    position: relative;
+    padding-right: 0;
+}
+i.bedIcon{
+    line-height: 0.7;
+    padding: 0 10px;
+}
+.addroomText{
+    display: flex;
+    justify-content: center;
+    line-height: 2.1;
+}
+.addroomText i.bedIcon{
+    line-height: 1.7;
+}
+.show{
+    display: block!important;
+}
+.homeCard{
+    font-weight: 400;
+    background-color: rgb(255, 255, 255);
+    color: rgb(101, 101, 101);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 17px 27px 0px;
+    height: 11.5rem;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 2%;;
+    margin: 1.25rem .9375rem 0 0;
+}
+.card-functionality{
+    display: inline-flex;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 4px;
+}
+.card-img{
+    width: 8.5rem;
+    padding: 1rem;
+}
+.card-img i{
+    font-size: 3rem;
+    color: #fc5b62;
+}
+.homeCard p{
+    font-size: 0.9rem!important;
+    margin-bottom: 0!important;
+}
+.cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem 1rem 0px;
+    margin: 0px 0px 45px;
+}
+.col-md-4{
+    padding: 0;
+}
+@media (max-width: 768px){
+.container {
+    margin-top: 10%;
+}
+}
+@media (max-width: 1024px){
+.header-video {
+    height: fit-content!important;
+}
+}
+a.messanger-deal, a.sms-deal{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 19.125rem;
+    height: 4.375rem;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    color: rgb(255, 255, 255);
+    margin: 0.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.5s ease 0s;
+}
+a.messanger-deal{
+    box-shadow: rgba(74, 144, 226, 0.26) 0px 17px 27px 0px;
+    background-color: rgb(74, 144, 226);
+}
+a.sms-deal{
+    background-color: rgb(100, 170, 25);
+}
+.deals{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem 1rem 0px;
+    margin: 0px;
+}
+.deals i    {
+    margin-right: 3%;
+    font-size: 1.5rem;
+}
+.or-circle{
+    color: rgb(176, 176, 176);
+    background-color: rgb(255, 255, 255);
+    font-size: 0.75rem;
+    z-index: 2;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    position: absolute;
+    left: calc(50% - 15px);
+    top: calc(50% - 9px);
+    border-radius: 50%;
 }

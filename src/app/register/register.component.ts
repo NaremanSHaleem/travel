@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MustMatch } from '../../assets/services/must-match.validator';
 import { RegisterService } from 'src/assets/services/register.service';
 import { TokenCheckService } from 'src/assets/services/token-check.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  urlPath = environment.urlPath;
   registerForm: FormGroup;
   submitted = false;
-
 
   constructor(private formBuilder: FormBuilder, 
     private registerService: RegisterService, 

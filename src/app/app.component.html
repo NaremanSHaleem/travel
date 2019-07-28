@@ -1,14 +1,32 @@
 <div id="mm-0" class="mm-page mm-slideout " style="min-height: 601px;">
   <div id="page">
-  
     <app-header *ngIf="routerURL != '/login' && routerURL != '/register'"></app-header>
-  
+    <div class="popup" *ngIf="loginIsRequired">
+      <div class="content">
+        <h4>Please Login First</h4>
+        <input type="button" class="submit-btn cancelbtn" value="Cancel" id="cancelbtn" (click)="closePopup()">
+        <input type="button" class="submit-btn" value="Login" id="gologinbtn" (click)="goLogin()">
+      </div>
+    </div>
     <main>
+      <!-- <div class="loginRequired" *ngIf="loginIsRequired">Please Log In First</div> -->
       <router-outlet></router-outlet>
+      <!-- <iframe allow="microphone;" class="fixed-chat" width="350" height="430"
+        src="https://console.dialogflow.com/api-client/demo/embedded/21972b60-2e9f-4dd8-bfe1-5b1757b68c1f">
+      </iframe> -->
     </main>
-  
-    <app-footer *ngIf="routerURL != '/login' && routerURL != '/register' && routerURL != '/app'"></app-footer>
+    <app-footer
+      *ngIf="routerURL != '/login' && routerURL != '/register' && routerURL != '/app' && routerURL != '/cart'">
+    </app-footer>
   </div>
   <!-- page -->
-  <div id="toTop" pageScroll href="#page"></div><!-- Back to top button -->
-  </div>
+  <!-- <div id="toTop" pageScroll href="#page"></div> -->
+  <!-- Back to top button -->
+  <div id="fb-root"></div>
+  <!-- Your customer chat code -->
+<div class="fb-customerchat"
+attribution=setup_tool
+page_id="140174036556263">
+</div>
+
+</div>

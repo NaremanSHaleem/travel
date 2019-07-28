@@ -1,5 +1,5 @@
 <main>
-  <div class="hero_in cart_section">
+  <div class="hero_in cart_section" style="height:250px">
     <div class="wrapper">
       <div class="container">
         <h2 *ngIf="!itemAdded" style="color: #fff;">Your Cart is empty</h2>
@@ -8,6 +8,7 @@
     </div>
   </div>
   <!--/hero_in-->
+  <app-invoice *ngIf="isfinished"></app-invoice>
   <div class="bg_color_1" *ngIf="itemAdded && !isfinished">
     <div class="container margin_60_35">
       <div class="row">
@@ -19,28 +20,120 @@
                 Mussum ipsum cacilds, vidis litro abertis.
               </p>
             </div>
-            <form [formGroup]="passangers">
-              <div class="step">
-               
-                <div formArrayName="AdultsPassengers"
-                  *ngFor="let item of passangers.get('AdultsPassengers').controls; let i = index;">
-                  <h4 *ngIf="i ==0">Main Passanger <small>Adult</small></h4>
-                  <h4 *ngIf="i !=0">Passanger <small>Adult</small></h4>
-                  <div [formGroupName]="i">
+            <div>
+              <!-- <h2>Room 1</h2>
+              <form [formGroup]="passangers">
+                <div class="step">
+
+                  <div formArrayName="AdultsPassengers"
+                    *ngFor="let item of passangers.get('AdultsPassengers').controls; let i = index;">
+                    <h4 *ngIf="i ==0">Main Passanger <small>Adult</small></h4>
+                    <h4 *ngIf="i !=0">Passanger <small>Adult</small></h4>
+                    <div [formGroupName]="i">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Title</label>
+                            <select class="nice-select wide " [ngClass]="{
+                                redInput:
+                                  passangers.controls.AdultsPassengers.controls[i].get('title')
+                                    .invalid && showErrors
+                              }" formControlName="title" placeholder="Title">
+                              <option value="">-</option>
+                              <option value="Mr.">Mr.</option>
+                              <option value="Ms.">Ms.</option>
+                              <option value="Mrs.">Mrs.</option>
+                              <option value="Miss">Miss</option>
+                              <option value="Master">Master</option>
+                              <option value="Dr.">Dr.</option>
+                              <option value="Prof.">Prof.</option>
+                            </select>
+
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>First name</label>
+                            <input type="text" class="form-control" formControlName="first_name" id="firstname_booking"
+                              name="firstname_booking" [ngClass]="{
+                                  redInput:
+                                    passangers.controls.AdultsPassengers.controls[i].get('first_name')
+                                      .invalid && showErrors
+                                }">
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Middle name</label>
+                            <input type="text" class="form-control" formControlName="middle_name"
+                              id="middlename_booking" name="firstname_booking" [ngClass]="{
+                                    redInput:
+                                      passangers.controls.AdultsPassengers.controls[i].get('middle_name')
+                                        .invalid && showErrors
+                                  }">
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Last name</label>
+                            <input type="text" class="form-control" formControlName="last_name" id="lastname_booking"
+                              name="lastname_booking" [ngClass]="{
+                                redInput:
+                                  passangers.controls.AdultsPassengers.controls[i].get('last_name')
+                                    .invalid && showErrors
+                              }">
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" id="email_booking_2" formControlName="phone_number" name="phoneNumber"
+                              class="form-control" [ngClass]="{
+                                    redInput:
+                                      passangers.controls.AdultsPassengers.controls[i].get('phone_number')
+                                        .invalid && showErrors
+                                  }">
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" id="email_booking_2" formControlName="email" name="email_booking_2"
+                              class="form-control" [ngClass]="{
+                                      redInput:
+                                        passangers.controls.AdultsPassengers.controls[i].get('email')
+                                          .invalid && showErrors
+                                    }">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div class="step" formArrayName="ChildernPassengers"
+                  *ngFor="let item of passangers.get('ChildernPassengers').controls; let x = index;">
+                  <div [formGroupName]="x">
+
+                    <h4> Passanger <small>Child</small></h4>
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Title</label>
-                            <select class="nice-select wide "
-                            [ngClass]="{
-                              redInput:
-                                passangers.controls.AdultsPassengers.controls[i].get('title')
-                                  .invalid && showErrors
-                            }"
-                            formControlName="title"
-                            placeholder="Title"
-                          >
-                            <!-- <option value="">-</option> -->
+                          <label>Title</label>
+                          <select class="nice-select wide " [ngClass]="{
+                                redInput:
+                                  passangers.controls.ChildernPassengers.controls[i].get('title')
+                                    .invalid && showErrors
+                              }" formControlName="title" placeholder="Title">
+                            <option value="">-</option>
                             <option value="Mr.">Mr.</option>
                             <option value="Ms.">Ms.</option>
                             <option value="Mrs.">Mrs.</option>
@@ -52,99 +145,197 @@
 
                         </div>
                       </div>
+
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>First name</label>
                           <input type="text" class="form-control" formControlName="first_name" id="firstname_booking"
-                            name="firstname_booking" 
-                            [ngClass]="{
-                            redInput:
-                              passangers.controls.AdultsPassengers.controls[i].get('first_name')
-                                .invalid && showErrors
-                          }">
+                            name="firstname_booking" [ngClass]="{
+                                  redInput:
+                                    passangers.controls.ChildernPassengers.controls[i].get('first_name')
+                                      .invalid && showErrors
+                                }">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Last name</label>
-                          <input type="text" class="form-control" formControlName="last_name" id="lastname_booking"
-                            name="lastname_booking"
-                            [ngClass]="{
-                              redInput:
-                                passangers.controls.AdultsPassengers.controls[i].get('last_name')
-                                  .invalid && showErrors
-                            }">
+                          <label>Middle name</label>
+                          <input type="text" class="form-control" formControlName="middle_name" id="middlename_booking"
+                            name="firstname_booking" [ngClass]="{
+                                    redInput:
+                                      passangers.controls.ChildernPassengers.controls[i].get('middle_name')
+                                        .invalid && showErrors
+                                  }">
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>Birthdate</label>
-                          <input type="date" id="email_booking_2" formControlName="dateOfBirth" name="email_booking_2"
+                          <label>Last name</label>
+                          <input type="text" class="form-control" formControlName="last_name" id="lastname_booking"
+                            name="lastname_booking" [ngClass]="{
+                                redInput:
+                                  passangers.controls.ChildernPassengers.controls[i].get('last_name')
+                                    .invalid && showErrors
+                              }">
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Phone Number</label>
+                          <input type="text" id="email_booking_2" formControlName="phone_number" name="phoneNumber"
                             class="form-control" [ngClass]="{
-                              redInput:
-                                passangers.controls.AdultsPassengers.controls[i].get('dateOfBirth')
-                                  .invalid && showErrors
-                            }">
+                                    redInput:
+                                      passangers.controls.ChildernPassengers.controls[i].get('phone_number')
+                                        .invalid && showErrors
+                                  }">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" id="email_booking_2" formControlName="email" name="email_booking_2"
+                            class="form-control" [ngClass]="{
+                                      redInput:
+                                        passangers.controls.ChildernPassengers.controls[i].get('email')
+                                          .invalid && showErrors
+                                    }">
                         </div>
                       </div>
                     </div>
+
                   </div>
 
                 </div>
-              </div>
+              </form> -->
+              <form [formGroup]="form">
+                <!-- Rooms -->
+                <div formArrayName="Rooms" class="step">
+                  <div *ngFor="let X of form['controls'].Rooms['controls']; let ix = index">
+                    <div formGroupName="{{ ix }}" class="room">
+                      <h6 class="room-title">Room {{ix + 1}}</h6>
+
+                      <!-- Adults -->
+                      <div formArrayName="Adults">
+                        <div *ngFor="let Y of X['controls'].Adults['controls']; let iy = index">
+                          <h5>Adult {{iy + 1}}</h5>
+                          <div formGroupName="{{ iy }}" class="passenger" class="form-group">
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Title</label>
+                                  <input type="text" formControlName="Title" class="form-control" />
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>FirstName</label>
+                                  <input type="text" formControlName="FirstName" class="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                              <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>MiddleName</label>
+                                  <input type="text" formControlName="MiddleName" class="form-control" />
+                                </div></div>
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                    <label>LastName</label>
+                                    <input type="text" formControlName="LastName" class="form-control" />
+                                  </div>
+                                </div>
+                             
+                            </div>
+
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>PhoneNumber</label>
+                                  <input type="text" formControlName="PhoneNumber" class="form-control" /></div></div>
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" formControlName="Email" class="form-control" /></div>
+                                </div>
+                             
+                            </div>
+
+                          </div>
+                        </div>
+                        <!-- <input type="button" (click)="addAdult(ix)" value="Add Adult" /> -->
+                      </div>
+                      <!-- Adults End-->
 
 
-              <div class="step" formArrayName="ChildernPassengers"
-                *ngFor="let item of passangers.get('ChildernPassengers').controls; let x = index;">
-                <div [formGroupName]="x">
-               
-                    <h4> Passanger <small>Child</small></h4>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label>First name</label>
-                          <input type="text" class="form-control" id="firstname_booking" name="firstname_booking"
-                          formControlName="first_name"
-                            [ngClass]="{
-                              redInput:
-                                passangers.controls.ChildernPassengers.controls[x].get('first_name')
-                                  .invalid && showErrors
-                            }">
+
+                      <!-- Children -->
+                      <div formArrayName="Children">
+                        <div *ngFor="let Y of X['controls'].Children['controls']; let iy = index">
+                            <h5>Child {{iy + 1}}</h5>
+                          <div formGroupName="{{ iy }}" class="passenger" class="form-group">
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Title</label>
+                                  <input type="text" formControlName="Title" class="form-control" />
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>First Name</label>
+                                  <input type="text" formControlName="FirstName" class="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Middle Name</label>
+                                  <input type="text" formControlName="MiddleName" class="form-control" /></div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Last Name</label>
+                                  <input type="text" formControlName="LastName" class="form-control" /></div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Phone Number</label>
+                                  <input type="text" formControlName="PhoneNumber" class="form-control" /></div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input type="text" formControlName="Email" class="form-control" /></div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                        <!-- <input type="button" (click)="addChild(ix)" value="Add Child" /> -->
                       </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label>Last name</label>
-                          <input type="text" class="form-control" id="lastname_booking" name="lastname_booking"
-                          [ngClass]="{
-                            redInput:
-                              passangers.controls.ChildernPassengers.controls[x].get('last_name')
-                                .invalid && showErrors
-                          }"
-                          formControlName="last_name">
-                        </div>
-                      </div>
+                      <!-- Adults End-->
+
+
+
                     </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                          <label>Birthdate</label>
-                          <input type="date" id="birthdate_booking" name="birthdate_booking" class="form-control"
-                            formControlName="dateOfBirth"  [ngClass]="{
-                              redInput:
-                                passangers.controls.ChildernPassengers.controls[x].get('dateOfBirth')
-                                  .invalid && showErrors
-                            }">
-                        </div>
-                      </div>
-                    </div>
-               
+                  </div>
+                  <!-- <input type="button" (click)="addRoom()" value="Add Room" /> -->
                 </div>
+                <!-- Rooms End -->
 
-              </div>
-            </form>
+
+                <button type="button" (click)="Submit()">Submit</button>
+
+              </form>
+            </div>
 
             <hr>
             <!--End step -->
@@ -155,19 +346,31 @@
               </p>
             </div>
             <div class="step">
-              <div class="form-group">
-                <label>Name on card</label>
-                <input type="text" class="form-control" id="name_card_bookign" name="name_card_bookign">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Name on card</label>
+                    <input type="text" class="form-control" id="name_card_bookign" [(ngModel)]="cardHolder">
+                  </div>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 1rem;">
+                  <div class="form-group">
+                    <label>Select your card type</label>
+                    <select class="nice-select wide" [(ngModel)]="selectedCardTypeCode">
+                      <Option *ngFor="let cardtype of cardTypes" [value]="cardtype.value">{{cardtype.name}}</Option>
+                    </select>
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-6 col-sm-12">
                   <div class="form-group">
                     <label>Card number</label>
-                    <input type="text" id="card_number" name="card_number" class="form-control">
+                    <input type="text" id="card_number" class="form-control" [(ngModel)]="cardNumber">
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                  <img src="assets/img/cards_all.svg" alt="Cards" class="cards-payment">
+                  <img src="{{urlPath}}/assets/img/cards_all.svg" alt="Cards" class="cards-payment">
                 </div>
               </div>
               <div class="row">
@@ -176,12 +379,14 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input type="text" id="expire_month" name="expire_month" class="form-control" placeholder="MM">
+                        <input type="text" id="expire_month" class="form-control" placeholder="MM"
+                          [(ngModel)]="expireMonth">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input type="text" id="expire_year" name="expire_year" class="form-control" placeholder="Year">
+                        <input type="text" id="expire_year" class="form-control" placeholder="Year"
+                          [(ngModel)]="expireYear">
                       </div>
                     </div>
                   </div>
@@ -192,11 +397,11 @@
                     <div class="row">
                       <div class="col-4">
                         <div class="form-group">
-                          <input type="text" id="ccv" name="ccv" class="form-control" placeholder="CCV">
+                          <input type="text" id="ccv" class="form-control" placeholder="CVC" [(ngModel)]="cvc">
                         </div>
                       </div>
                       <div class="col-8">
-                        <img src="assets/img/icon_ccv.gif" width="50" height="29" alt="ccv"><small>Last 3
+                        <img src="{{urlPath}}/assets/img/icon_ccv.gif" width="50" height="29" alt="ccv"><small>Last 3
                           digits</small>
                       </div>
                     </div>
@@ -205,74 +410,14 @@
               </div>
               <!--End row -->
               <hr>
-              <h4>Or checkout with Paypal</h4>
+              <!-- <h4>Or checkout with Paypal</h4>
               <p>
                 Lorem ipsum dolor sit amet, vim id accusata sensibus, id ridens quaeque qui. Ne qui vocent ornatus
                 molestie, reque fierent dissentiunt mel ea.
               </p>
               <p>
                 <a href="#0"><img src="assets/img/paypal_bt.png" alt="Image"></a>
-              </p>
-            </div>
-            <hr>
-            <!--End step -->
-            <div class="form_title">
-              <h3><strong>3</strong>Billing Address</h3>
-              <p>
-                Mussum ipsum cacilds, vidis litro abertis.
-              </p>
-            </div>
-            <div class="step">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label>Country</label>
-                    <div class="custom-select-form">
-                      <select class="wide add_bottom_15" name="country" id="country">
-                        <option value="" selected>Select your country</option>
-                        <option value="Europe">Europe</option>
-                        <option value="United states">United states</option>
-                        <option value="Asia">Asia</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label>Street line 1</label>
-                    <input type="text" id="street_1" name="street_1" class="form-control">
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label>Street line 2</label>
-                    <input type="text" id="street_2" name="street_2" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 col-sm-12">
-                  <div class="form-group">
-                    <label>City</label>
-                    <input type="text" id="city_booking" name="city_booking" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="form-group">
-                    <label>State</label>
-                    <input type="text" id="state_booking" name="state_booking" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="form-group">
-                    <label>Postal code</label>
-                    <input type="text" id="postal_code" name="postal_code" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <!--End row -->
+              </p> -->
             </div>
             <hr>
             <!--End step -->
@@ -288,22 +433,26 @@
           <div class="box_detail">
             <div id="total_cart">
               <div class="sidebar-image">
-                <img style="width: 100%;"
+                <!-- <img style="width: 100%;"
                   src="https://mres.majortravel.co.uk/{{tourdetails.Item.itineraries[0].Destination.featured_image}}"
-                  alt="" srcset="">
+                  alt="" srcset=""> -->
               </div>
-              <h5 class="side-header">{{tourdetails.Item.Tour.name}}</h5>
-              Total <span class="float-right">£{{tourdetails.Item.Tour.price*numberOfPassangers}}</span>
+              <h5 class="side-header">{{hotelmaindetails.name}}</h5>
+              Total
+              <span class="float-right">£{{totalCost}}</span>
             </div>
             <ul class="cart_details">
-              <li>Country <span>{{tourdetails.Item.Tour.country_name}}</span></li>
+              <li>Country
+                <span>{{country}}</span>
+              </li>
               <!-- <li>City <span>city-name</span></li> -->
               <!-- <li>From <span>02-11-18</span></li>
               <li>To <span>04-11-18</span></li> -->
-              <li>Duration <span>{{tourdetails.Item.Tour.duration | slice:0:1}} days -
-                  {{tourdetails.Item.Tour.duration | slice:2}} nights</span></li>
+              <li>Duration
+                <span>{{numberOfNights}} nights</span>
+              </li>
               <li>Adults <span>{{numberOfAdults}}</span></li>
-              <li>Childs <span>{{numberOfChildren}}</span></li>
+              <li>Children <span>{{numberOfChildren}}</span></li>
             </ul>
             <a (click)="purchase()" class="btn_1 full-width purchase">Purchase</a>
           </div>

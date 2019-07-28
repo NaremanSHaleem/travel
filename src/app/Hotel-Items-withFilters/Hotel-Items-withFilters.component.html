@@ -1,7 +1,9 @@
 
+  <!-- *ngIf="showresults"  -->
 
 <div class="container margin_60_35">
-  <div class="row" *ngIf="showresults">
+  <div class="row" 
+  >
       <aside class="col-lg-3 filter-col">
      
           <div id="filters_col" (click)="filtring()">
@@ -34,6 +36,13 @@
                     {{category.name}}
                   </label>
                 </li> -->
+                <li>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" value="Ro" (change)="toggleVisibility($event)">
+                    <span class="custom-control-indicator"></span>
+                    Room only
+                  </label>
+                </li>
                   <li>
                     <label class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" value="HB" (change)="toggleVisibility($event)">
@@ -57,9 +66,9 @@
                   </li>
                   <li>
                     <label class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" value="RO" (change)="toggleVisibility($event)">
+                      <input type="checkbox" class="custom-control-input" value="AL" (change)="toggleVisibility($event)">
                       <span class="custom-control-indicator"></span>
-                      Room only
+                      All inclusive
                     </label>
                   </li>
     
@@ -83,7 +92,7 @@
                       <input type="checkbox" class="custom-control-input" value="5" (change)="rateToggleVisibility($event)">
                       <span class="custom-control-indicator"></span>
                       <span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i
-                          class="icon_star"></i><i class="icon_star"></i></span> <small>(25)</small>
+                          class="icon_star"></i><i class="icon_star"></i></span> 
                     </label>
                   </li>
                   <li>
@@ -91,7 +100,7 @@
                       <input type="checkbox" class="custom-control-input" value="4" (change)="rateToggleVisibility($event)">
                       <span class="custom-control-indicator"></span>
                       <span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i
-                          class="icon_star"></i></span> <small>(25)</small>
+                          class="icon_star"></i></span> 
     
                     </label>
                   </li>
@@ -99,8 +108,23 @@
                     <label class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" value="3" (change)="rateToggleVisibility($event)">
                       <span class="custom-control-indicator"></span>
-                      <span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i
-                          class="icon_star"></i></span> <small>(25)</small>
+                      <span class="cat_star"><i class="icon_star"></i><i class="icon_star"><i class="icon_star"></i></i></span> 
+    
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="2" (change)="rateToggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      <span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i></span> 
+    
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="1" (change)="rateToggleVisibility($event)">
+                      <span class="custom-control-indicator"></span>
+                      <span class="cat_star"> <i class="icon_star"></i></span> 
     
                     </label>
                   </li>
@@ -125,8 +149,8 @@
 		[scrollWindow]="true">
 			<h6>Search Results</h6>
 			<hr>
-			<!-- <h4 *ngIf="searchResult.data.hotels.length == 0">There are no results that match your search</h4> -->
-      <div class="box_list" *ngFor="let hotel of searchResult.data.hotels">
+			<h4 *ngIf="searchResult.length == 0">There are no results that match your search</h4>
+      <div class="box_list" *ngFor="let hotel of searchResult">
         <div class="row no-gutters">
           <div class="col-lg-5">
             <figure>
@@ -142,15 +166,16 @@
               <!-- <a href="#0" class="wish_bt"></a> -->
               <div class="cat_star">
                 <img src="{{hotel.ratingImage}}" alt="" srcset="">
-                <!-- <i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i
-                  class="icon_star"></i> -->
+                <i *ngFor="let i of Arr(+hotel.rating).fill(1)" class="icon_star"></i>
                 </div>
               <h3><a routerLink="/hoteldetails/{{hotel.id}}">{{hotel.name}}</a></h3>
-              <p>{{hotel.address}}</p>
-              <p [innerHTML]="hotel.description"></p>
-              <span class="price">From <strong>£{{hotel.price}}</strong> /per person</span>
+              <p><i class="icon_pin_alt"></i>  {{hotel.address}}</p>
+              <p [innerHTML]="hotel.description | slice:0:100" ></p>
+              <span class="price">From <strong>£{{hotel.price}}</strong></span>
             </div>
-
+            <div class="score">
+              <ul><li><a routerLink="/hoteldetails/{{hotel.id}}"><strong>Read more</strong></a></li></ul>
+            </div>
           </div>
         </div>
       </div>

@@ -1,11 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TokenCheckService {
+export class TokenCheckService  {
   token =  null;
   Userdata;
-constructor() { }
+  requiredLogin: boolean= false;
+  requiredLoginChange: Subject<boolean> = new Subject<boolean>();
+
+constructor() { 
+  this.requiredLoginChange.subscribe((value) => {
+    this.requiredLogin = value
+});
+}
+
 
 }

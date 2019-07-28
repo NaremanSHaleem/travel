@@ -6,7 +6,7 @@ import { Options, LabelType } from 'ng5-slider';
   styleUrls: ['./hotels-list.component.css']
 })
 export class HotelsListComponent implements OnInit {
-
+ destination: string;
   // @Output() selected: EventEmitter<any> = new EventEmitter();
 
   // ischecked = false;

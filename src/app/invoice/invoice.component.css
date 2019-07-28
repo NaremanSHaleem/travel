@@ -1,0 +1,9 @@
+@media screen and (max-width: 992px) {
+    .row {
+        margin: 5% 0;
+    }
+
+    [class^="col"] {
+padding: 2% 0;
+}
+}

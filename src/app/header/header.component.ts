@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { TokenCheckService } from 'src/assets/services/token-check.service';
+import { HomeSearchService } from 'src/assets/services/homeSearch.service';
+import { environment } from 'src/environments/environment';
 declare let $: any;
 @Component({
   selector: 'app-header',
@@ -8,26 +10,31 @@ declare let $: any;
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private checktoken: TokenCheckService, private elementRef: ElementRef) {
-
-
-  }
+  urlPath = environment.urlPath;
   isLoggedin = false;
   Username = '';
   elem: Element;
   ele;
-  ngOnInit() {
+  loading: boolean;
 
+  constructor(private checktoken: TokenCheckService, private elementRef: ElementRef, private homesearchservice: HomeSearchService) {
+  }
+
+  ngOnInit() {
+    // console.log(this.loading );
+    console.log(this.checktoken.token);
+    if (this.checktoken.token) {
+      this.isLoggedin = true;
+      this.Username = this.checktoken.Userdata.name;
+    }
+  }
+
+  ngDoCheck() {
+    this.loading = this.homesearchservice.loading;
+    // console.log(this.loading);
   }
 
   ngAfterViewInit() {
-    console.log(this.checktoken.token);
-    // console.log(this.checktoken.Userdata.first_name);
-    if (this.checktoken.token) {
-      this.isLoggedin = true;
-      this.Username = this.checktoken.Userdata.first_name;
-    }
-
     // Mobile Mmenu
     var $menu = $("nav#menu").mmenu({
       "extensions": ["pagedim-black"],
@@ -89,12 +96,13 @@ export class HeaderComponent implements OnInit {
 
     //  let blocker = document.querySelector('#mm-blocker');
     if (this.elem.classList.contains('slide-right')) {
-  
+
       mobileMenu.classList.remove('is-active');
       this.elem.classList.remove('slide-right');
-    } else { 
+    } else {
       this.elem.classList.add('slide-right');
-    mobileMenu.classList.add('is-active'); }
+      mobileMenu.classList.add('is-active');
+    }
 
   }
 

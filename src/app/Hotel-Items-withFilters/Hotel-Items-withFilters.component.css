@@ -112,3 +112,10 @@ a#filters_col_bt{
 .price strong{
   font-size: 1.5rem;
 }
+.score ul{
+  padding-top: 9px;
+}
+.score strong{
+  border-radius: 5px 5px;
+  padding: 10px 47px;
+}

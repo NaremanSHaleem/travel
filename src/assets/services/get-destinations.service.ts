@@ -6,17 +6,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class GetDestinationsService {
 
-  getDestinationsApi='https://www.discountedhotels.co.uk/api/get-destinations';
+  getDestinationsApi='https://www.stamped.travel/api/get-destinations';
 constructor(public http: HttpClient) { }
 
 getDestinations(keyword:string){
 
-    
-  // const headers = new HttpHeaders({
-  //   'Content-Type': 'application/x-www-form-urlencoded'
-  // });
-  // const params = new HttpParams()
-  // .set('keyword', 'k');
   return this.http.get(this.getDestinationsApi, {
     params:{
         'keyword': keyword

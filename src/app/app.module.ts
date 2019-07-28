@@ -21,6 +21,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MomentModule } from 'ngx-moment';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import {SatNativeDateModule, SatDatepickerModule} from 'saturn-datepicker';
+import { BookingComponent } from './booking/booking.component';
+import { DestinationsVideosComponent } from './destinations-videos/destinations-videos.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { TopDestinationsComponent } from './top-destinations/top-destinations.component';
 
 @NgModule({
    declarations: [
@@ -34,7 +42,11 @@ import { MomentModule } from 'ngx-moment';
       OrderFinishedComponent,
       HotelItemsWithFiltersComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
+      InvoiceComponent,
+      BookingComponent,
+      DestinationsVideosComponent,
+      TopDestinationsComponent
    ],
    imports: [
       BrowserModule,
@@ -45,7 +57,13 @@ import { MomentModule } from 'ngx-moment';
       ReactiveFormsModule,
       Ng5SliderModule,
       InfiniteScrollModule,
-      MomentModule
+      MomentModule,
+      NgxDaterangepickerMd.forRoot(),
+      SatNativeDateModule,
+      AgmCoreModule.forRoot(),
+      SatDatepickerModule,
+      CarouselModule,
+      BrowserAnimationsModule
    ],
    providers: [],
    bootstrap: [

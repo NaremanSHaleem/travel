@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
+    <meta name="author" content="Ansonika">
+  <title>HotelsApp</title>
+  <base href="/">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- Favicons-->
+<link rel="shortcut icon" href="hotels-app/assets/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" type="image/x-icon" href="hotels-app/assets/img/apple-touch-icon-57x57-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="hotels-app/assets/img/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="hotels-app/assets/img/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="hotels-app/assets/img/apple-touch-icon-144x144-precomposed.png">
+<script src="hotels-app/assets/js/modernizr.js"></script>
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '212992616254949');
+  fbq('track', 'PageView');
+ </script>
+ <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=212992616254949&ev=PageView&noscript=1
+ https://www.facebook.com/tr?id=212992616254949&ev=PageView&noscript=1
+ "
+ /></noscript>
+ <!-- End Facebook Pixel Code -->
+</head>
+<body>
+  <app-root></app-root>
+
+
+
+  <!-- COMMON SCRIPTS -->
+  <script src="hotels-app/assets/js/jquery-2.2.4.min.js"></script>
+  
+  <script src="hotels-app/assets/js/common_scripts.js"></script>
+  <script src="hotels-app/assets/js/template_main.js"></script>
+<script src="hotels-app/assets/assets/validate.js"></script>
+
+<!-- SPECIFIC SCRIPTS -->
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+  <!-- Load Facebook SDK for JavaScript -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v3.3'
+      });
+    };
+  
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  
+  
+</body>
+</html>

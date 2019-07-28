@@ -10,14 +10,15 @@ export class HotelItemsWithFiltersComponent implements OnInit {
 
   @Output() selected: EventEmitter<any> = new EventEmitter();
 
+  counter = 1;
   ischecked = false;
   SearchHotel;
   DataFeed: any;
-  hotels=['A', 'B', 'C']
-  selectedFoodType=[];
-  selectedRate=[]
-  showresults ;
- 
+  hotels = ['A', 'B', 'C']
+  selectedFoodType = [];
+  selectedRate = []
+  showresults;
+  Arr = Array;
   minValue: number = 0;
   maxValue: number = 12000;
   options: Options = {
@@ -36,11 +37,11 @@ export class HotelItemsWithFiltersComponent implements OnInit {
       }
     }
   };
-  searchResult=[];
+  searchResult = [];
   numberOfPages: any;
-  page =1;
+  page = 1;
 
-  constructor(private homesearchservice :HomeSearchService) { }
+  constructor(private homesearchservice: HomeSearchService) { }
 
 
   SelectItem(item: any) {
@@ -63,11 +64,22 @@ export class HotelItemsWithFiltersComponent implements OnInit {
       // this.toggle2 = false;
     }, 500);
   }
-  filtring() {
-    console.log("filtring" + '  '+  this.SearchHotel + ' - ' + this.minValue + ' - ' + this.maxValue, this.selectedRate, this.selectedFoodType);
-    this.homesearchservice.filter(this.SearchHotel , this.minValue , this.maxValue, this.selectedRate, this.selectedFoodType);
+   filtring() {
+    console.log("filtring" + '  ' + this.SearchHotel + ' - ' + this.minValue + ' - ' + this.maxValue, this.selectedRate, this.selectedFoodType);
+     this.homesearchservice.filter(this.SearchHotel, this.minValue, this.maxValue, this.selectedRate, this.selectedFoodType, this.resetResults);
+    //  this.resetResults();
   }
-
+  
+  resetResults = ()=>{
+    this.searchResult = this.homesearchservice.searchResults;
+    this.numberOfPages = this.searchResult['totalPages'];
+    console.log(this.searchResult);
+    
+  }
+  ngOnChanges(){
+    this.searchResult = this.homesearchservice.searchResults;
+    console.log(this.searchResult);
+}
 
   onValueChange(e) {
     this.minValue = e;
@@ -81,77 +93,63 @@ export class HotelItemsWithFiltersComponent implements OnInit {
 
   toggleVisibility(e) {
     this.ischecked = e.target.checked;
-    // console.log(e.srcElement.value);
+    
     if (this.ischecked) {
       this.selectedFoodType.push(e.srcElement.value);
       console.log(this.selectedFoodType);
-      // this.selectedcategoryId.push(e.srcElement.value);
-      // console.log(this.selectedcategoryId);
-
     } else {
-      for( var i = 0; i <  this.selectedFoodType.length; i++){ 
-        if ( this.selectedFoodType[i] === e.srcElement.value) {
-          this.selectedFoodType.splice(i, 1); 
+      for (var i = 0; i < this.selectedFoodType.length; i++) {
+        if (this.selectedFoodType[i] === e.srcElement.value) {
+          this.selectedFoodType.splice(i, 1);
         }
-     }
-      // for (var i = 0; i < this.selectedcategoryId.length; i++) {
-      //   if (this.selectedcategoryId[i] === e.srcElement.value) {
-      //     this.selectedcategoryId.splice(i, 1);
-      //   }
-      // }
-      // this.selectedcategoryId.remove(e.srcElement.value);
+      }
     }
-    // console.log(this.selectedcategoryId);
-    // this.tours = this.search();
+    this.filtring();
   }
-  rateToggleVisibility(e){
+
+  rateToggleVisibility(e) {
     this.ischecked = e.target.checked;
-    // console.log(e.srcElement.value);
+    console.log(e.target.checked);
     if (this.ischecked) {
       this.selectedRate.push(e.srcElement.value);
       // console.log(this.selectedRate);
-      // this.selectedcategoryId.push(e.srcElement.value);
-      // console.log(this.selectedcategoryId);
 
     } else {
-      for( var i = 0; i <  this.selectedRate.length; i++){ 
-        if ( this.selectedRate[i] === e.srcElement.value) {
-          this.selectedRate.splice(i, 1); 
+      for (var i = 0; i < this.selectedRate.length; i++) {
+        if (this.selectedRate[i] === e.srcElement.value) {
+          this.selectedRate.splice(i, 1);
         }
-     }
-      // for (var i = 0; i < this.selectedcategoryId.length; i++) {
-      //   if (this.selectedcategoryId[i] === e.srcElement.value) {
-      //     this.selectedcategoryId.splice(i, 1);
-      //   }
-      // }
-      // this.selectedcategoryId.remove(e.srcElement.value);
+      }
     }
-    // console.log(this.selectedcategoryId);
-    // this.tours = this.search();
+    this.filtring();
   }
   ngOnInit() {
+    this.searchResult = [];
+    // this.numberOfPages = this.searchResult['totalPages'];
+    // if (this.homesearchservice.searchResults != null ) {
+    //   this.counter++;
+    //   this.searchResult = this.homesearchservice.searchResults;
+    //   this.numberOfPages = this.searchResult['totalPages'];
+
+    //   console.log(this.searchResult);
+    // }
+  }
+  
+  ngDoCheck() {
+
+    // this.showresults = this.homesearchservice.searchResultsDiv;
+   
   }
 
-  ngDoCheck() { 
-    this.showresults = this.homesearchservice.searchResultsDiv;
-    if(this.homesearchservice.searchResults != null){
-      this.searchResult = this.homesearchservice.searchResults;
-      this.numberOfPages = this.searchResult['totalPages'];
-      console.log('heree');
-
-      console.log(this.searchResult);
-  }  
- }
-
- onResultsScroll(){
-   console.log('resultsScrolling');
-  this.homesearchservice.onResultsScroll();
-  // console.log('Results scrolling');
-  // console.log(this.numberOfPages); 
-  // console.log(this.homesearchservice.searchResults);
-  // this.page = this.page +1;
-  // if(this.page <= this.numberOfPages){
-  //   this.homesearchservice.page = this.page; 
-  // }
-}
+  onResultsScroll() {
+    console.log('resultsScrolling');
+    this.homesearchservice.onResultsScroll();
+    // console.log('Results scrolling');
+    // console.log(this.numberOfPages); 
+    // console.log(this.homesearchservice.searchResults);
+    // this.page = this.page +1;
+    // if(this.page <= this.numberOfPages){
+    //   this.homesearchservice.page = this.page; 
+    // }
+  }
 }

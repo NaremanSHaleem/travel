@@ -1,0 +1,61 @@
+<main>
+
+  <section class="hero_in tours">
+    <div class="wrapper">
+      <div class="container">
+        <h1 class="fadeInUp"><span></span>Your Booking</h1>
+      </div>
+    </div>
+  </section>
+  <!--/hero_in-->
+
+  <div class="container margin_60_35">
+
+    <div class="wrapper-grid">
+      <div class="row">
+        	<h4 *ngIf="booking.length == 0">NO Orders Yet</h4>
+        <div class="col-lg-6" *ngIf="booking.length > 0">
+          <div class="box_cart">
+            <table *ngFor="let order of booking; let i= index" class="table table-striped" style="box-shadow: 6px 5px 4px 0px #d6d6d69e;">
+              <thead>
+                <tr>
+                  <th style="width: 50%;">
+                    Order number: {{i+1}} <br>
+                    Date: {{order.date}} <br>
+                    Total Price:  ${{order.totalPrice}}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr >
+                  <td>
+                    <div *ngFor="let item of order.products" class="order-item">
+                      <h5 style="color: #fc5b62;">{{item.product_details.hotel.name}}</h5>
+                      <h6>{{item.product_details.hotel.country}}</h6>
+                      <div class="cat_star"><i *ngFor="let i of Arr(+item.product_details.hotel.rating).fill(1)" class="icon_star"></i></div>
+                      <p [innerHtml]="item.product_details.hotel.description"></p>
+                      <p>Number of rooms: {{item.product_details.hotel.roomsCount}} <br>
+                      Number of nights: {{item.product_details.hotel.nightsCount}} 
+                      </p>
+                    </div>
+                    </td>             
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+        <!-- /col -->
+
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /isotope-wrapper -->
+
+  </div>
+  <!-- /container -->
+
+
+
+</main>
+<!--/main-->
